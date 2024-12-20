@@ -2,7 +2,8 @@ import axios from "axios";
 import { Menus } from "../types/menu";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "https://dns.conqod.site/api",
+  // baseURL: "http://localhost:5000/api",
   headers: {
     "Content-Type": "application/json",
   },
