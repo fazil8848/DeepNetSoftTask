@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "mongodb"
-  url      = env("DATABASE_URL")
+  url      = "mongodb+srv://fazilfaz8848:fazilfaz8848@cluster0.dmcxe.mongodb.net/menu-api?retryWrites=true&w=majority"
 }
 
 model Menu {
