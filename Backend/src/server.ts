@@ -13,10 +13,14 @@ app.use(express.json());
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins = [
-        process.env.CLIENT_URL,
-        `${process.env.CLIENT_URL}/`,
-      ];
+      const allowedOrigins =
+        process.env.PHASE === "DEV"
+          ? [process.env.LOCAL_CLIENT_URL, `${process.env.LOCAL_CLIENT_URL}/`]
+          : [
+              process.env.GLOBAL_CLIENT_URL,
+              `${process.env.GLOBAL_CLIENT_URL}/`,
+            ];
+
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
@@ -26,6 +30,7 @@ app.use(
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   })
 );
+
 
 app.use("/api/menus", menuRoutes);
 
