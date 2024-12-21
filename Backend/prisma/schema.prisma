@@ -20,4 +20,3 @@ model Item {
   description String
   menuId      String   @db.ObjectId
 }
-
