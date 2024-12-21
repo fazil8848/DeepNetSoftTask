@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-import menuRoutes from "./routes/menuRoutes";
+import menuRoutes from "./routes/menuRoutes.js"; // Use `.js` since Node.js will look for the transpiled file.
+
 import { PrismaClient } from "@prisma/client";
 import dotenv from "dotenv";
 dotenv.config();
@@ -9,7 +10,6 @@ const app = express();
 const prisma = new PrismaClient();
 
 app.use(express.json());
-
 app.use(
   cors({
     origin: (origin, callback) => {
