@@ -59,8 +59,12 @@ export const createMenu = async (req: Request, res: Response) => {
 export const getMenus = async (_req: Request, res: Response) => {
   try {
     const menus = await prisma.menu.findMany();
+    console.log(menus);
+
     res.status(200).json(menus);
   } catch (error: unknown) {
+    console.log(error);
+
     if (error instanceof Error) {
       handleError(res, "Error fetching menus", error.message);
     } else {
