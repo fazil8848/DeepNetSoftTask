@@ -9,19 +9,14 @@ dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
 
-console.log(process.env.GLOBAL_CLIENT_URL);
-
 app.use(express.json());
 app.use(
   cors({
     origin: (origin, callback) => {
-      const allowedOrigins =
-        process.env.PHASE === "DEV"
-          ? [process.env.LOCAL_CLIENT_URL, `${process.env.LOCAL_CLIENT_URL}/`]
-          : [
-              process.env.GLOBAL_CLIENT_URL,
-              `${process.env.GLOBAL_CLIENT_URL}/`,
-            ];
+      const allowedOrigins = [
+        process.env.LOCAL_CLIENT_URL,
+        `https://deep-net-soft-task.vercel.app`,
+      ];
 
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
