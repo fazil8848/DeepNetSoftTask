@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
 
-console.log(process.env.PHASE === "DEV");
+console.log(process.env.GLOBAL_CLIENT_URL);
 
 app.use(express.json());
 app.use(
