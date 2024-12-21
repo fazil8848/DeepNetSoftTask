@@ -9,6 +9,8 @@ dotenv.config();
 const app = express();
 const prisma = new PrismaClient();
 
+console.log(process.env.PHASE === "DEV");
+
 app.use(express.json());
 app.use(
   cors({
@@ -30,25 +32,8 @@ app.use(
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   })
 );
-app.get(
-  "/",
-  (req, res, next) => {
-    console.log("Reached");
-    next();
-  },
-  (req, res) => {
-    res.send("hello world");
-  }
-);
 
-app.use(
-  "/api/menus",
-  (req, res, next) => {
-    console.log("Reached");
-    next();
-  },
-  menuRoutes
-);
+app.use("/api/menus", menuRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
