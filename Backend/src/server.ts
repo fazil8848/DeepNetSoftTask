@@ -30,6 +30,16 @@ app.use(
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   })
 );
+app.get(
+  "/",
+  (req, res, next) => {
+    console.log("Reached");
+    next();
+  },
+  (req, res) => {
+    res.send("hello world");
+  }
+);
 
 app.use(
   "/api/menus",
