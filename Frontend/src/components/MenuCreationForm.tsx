@@ -23,9 +23,11 @@ export function MenuCreationForm() {
         try {
           setLoading(true);
           const menu = await getMenuById(id);
+          console.log(menu);
+
           setMenuName(menu.name || "");
           setMenuDescription(menu.description || "");
-          setMenuItems(menu.items || []);
+          setMenuItems(menu.menuItems || []);
         } catch (error) {
           console.error("Error fetching menu:", error);
         } finally {

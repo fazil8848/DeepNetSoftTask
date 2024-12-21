@@ -25,8 +25,6 @@ export const createMenu = async (req: Request, res: Response) => {
       .json({ message: "Name, description, and items are required" });
   }
 
-  console.log(items);
-
   try {
     const newMenu = await prisma.menu.create({
       data: {
@@ -76,7 +74,7 @@ export const getMenuById = async (req: Request, res: Response) => {
   try {
     const menu = await prisma.menu.findUnique({
       where: { id },
-      include: { items: true },
+      include: { menuItems: true },
     });
 
     if (!menu) {

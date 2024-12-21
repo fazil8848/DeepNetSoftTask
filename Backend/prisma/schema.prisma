@@ -1,4 +1,4 @@
-generator client {
+generator client { 
   provider = "prisma-client-js"
 }
 
@@ -8,9 +8,10 @@ datasource db {
 }
 
 model Menu {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  name        String   @unique
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  name        String     @unique
   description String
+  menuItems   menuItem[] @relation("MenuItems")  // Relation to menuItems
 }
 
 model menuItem {
@@ -19,4 +20,5 @@ model menuItem {
   price       Float
   description String
   menuId      String   @db.ObjectId
+  menu        Menu     @relation("MenuItems", fields: [menuId], references: [id]) // Link back to Menu
 }
