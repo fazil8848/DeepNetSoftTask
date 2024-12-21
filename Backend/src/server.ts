@@ -31,7 +31,14 @@ app.use(
   })
 );
 
-app.use("/api/menus", menuRoutes);
+app.use(
+  "/api/menus",
+  (req, res, next) => {
+    console.log("Reached");
+    next();
+  },
+  menuRoutes
+);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
