@@ -63,7 +63,6 @@ export const getMenus = async (_req: Request, res: Response) => {
 
     res.status(200).json(menus);
   } catch (error: unknown) {
-    console.log(error);
 
     if (error instanceof Error) {
       handleError(res, "Error fetching menus", error.message);
