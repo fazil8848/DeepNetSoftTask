@@ -1,9 +1,12 @@
 import axios from "axios";
 import { Menus } from "../types/menu";
 
+const locaApiUrl = import.meta.env.VITE_LOCAL_API_URL;
+const globalApiUrl = import.meta.env.VITE_GLOBAL_API_URL;
+const phase = import.meta.env.VITE_PHASE;
+
 const API = axios.create({
-  baseURL: "https://dns.conqod.site/api",
-  // baseURL: "http://localhost:5000/api",
+  baseURL: phase === "DEV" ? locaApiUrl : globalApiUrl,
   headers: {
     "Content-Type": "application/json",
   },
