@@ -5,8 +5,6 @@ const locaApiUrl = import.meta.env.VITE_LOCAL_API_URL;
 const globalApiUrl = import.meta.env.VITE_GLOBAL_API_URL;
 const phase = import.meta.env.VITE_PHASE;
 
-console.log(globalApiUrl);
-
 const API = axios.create({
   baseURL: phase === "DEV" ? locaApiUrl : globalApiUrl,
   headers: {
