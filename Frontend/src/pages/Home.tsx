@@ -6,12 +6,12 @@ import { Menu } from "../components/Menu";
 import Footer from "../components/Footer";
 import { getMenus } from "../services/apiServices";
 import Loader from "../components/Loader";
+import toast from "react-hot-toast";
 
 function Home() {
   const [menus, setMenus] = useState<Menus[]>([]);
   const [activeTab, setActiveTab] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const fetchMenus = async () => {
       try {
@@ -23,10 +23,10 @@ function Home() {
             setActiveTab(response[0].name);
           }
         } else {
-          setError("Invalid menu data format received.");
+          toast.error("Invalid menu data format received.");
         }
       } catch (err) {
-        setError("Failed to load the menus. Please try again later.");
+        toast.error("Failed to load the menus. Please try again later.");
       } finally {
         setLoading(false);
       }
