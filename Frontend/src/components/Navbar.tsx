@@ -9,9 +9,9 @@ export const Navbar = ({ activeTab }: NavNavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="flex justify-between items-center relative h-24 bg-[#121618] px-6 lg:px-24 xl:px-40 md:px-16 transition-all duration-300">
+    <nav className="flex justify-between items-center relative h-24 z-20 bg-[#121618] px-6 lg:px-24 xl:px-40 md:px-16 transition-all duration-300">
       <NavLink to={"/"}>
-        <div className="flex items-center h-[5.5rem] absolute -bottom-[2.75rem] left-[45%] md:left-0 md:-bottom-12 md:relative md:h-auto z-20">
+        <div className="flex items-center h-[5.5rem] absolute -bottom-[2.75rem] left-[45%] md:left-0 md:-bottom-12 md:relative md:h-auto z-300">
           <img src="/logo.svg" alt="Logo" className="w-16 md:w-[5.5rem]" />
           <div className="ml-2 md:block hidden text-4xl ">
             <p className="flex gap-1">

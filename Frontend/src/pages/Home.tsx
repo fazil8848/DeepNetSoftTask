@@ -39,17 +39,15 @@ function Home() {
     ? menus.find((menu) => menu.name === activeTab)
     : null;
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen bg-black bg-opacity-80">
-        <Loader />
-      </div>
-    );
-  }
   return (
     <div className="min-h-screen max-h-fit bg-black bg-opacity-95 transition-all duration-300">
       <Navbar activeTab="MENU" />
 
+      {loading && (
+        <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-70 z-10">
+          <Loader />
+        </div>
+      )}
       <main className="">
         <>
           <div className="text-center bg-mainBannerBg flex flex-col items-center justify-center h-[19rem]">
@@ -88,7 +86,9 @@ function Home() {
                 alt="Decorative cocktail"
                 className="absolute -left-6 -top-4  md:-left-14 md:-top-40 object-contain h-32 w-32 md:h-auto md:w-auto"
               />
-              {activeMenu && <Menu section={activeMenu} />}
+              {activeMenu && (
+                <Menu section={activeMenu} setLoading={setLoading} />
+              )}
               <img
                 src="/cocktail1.svg"
                 alt="Decorative cocktail"

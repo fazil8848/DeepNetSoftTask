@@ -96,8 +96,6 @@ export const getMenuById = async (req: Request, res: Response) => {
 export const getMenuItems = async (req: Request, res: Response) => {
   const { id } = req.params;
 
-  console.log(id);
-
   try {
     const items = await prisma.menuItem.findMany({
       where: { menuId: id },
