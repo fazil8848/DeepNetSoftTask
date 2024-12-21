@@ -13,7 +13,7 @@ model Menu {
   description String
 }
 
-model Item {
+model menuItem {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   price       Float
