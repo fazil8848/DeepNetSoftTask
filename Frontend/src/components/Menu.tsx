@@ -41,7 +41,7 @@ export const Menu = ({ section, setLoading }: MenuProps) => {
       </div>
       <div className="flex flex-wrap gap-8 max-h-96 overflow-y-auto scrollbar-hide">
         {items.map((item, index) => (
-          <div key={index} className="w-[45%]">
+          <div key={index} className="sm:w-[45%]">
             <div className="flex justify-between text-white text-xl font-oswald">
               <h3>{item.name}</h3>
               <div className="flex-grow mx-1 border-b-4 mb-1 border-dotted border-white"></div>

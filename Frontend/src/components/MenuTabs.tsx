@@ -1,6 +1,7 @@
 import { IoMdAdd } from "react-icons/io";
 import { IoSettingsSharp } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
 
 interface MenuTabsProps {
   tabs: string[];
@@ -15,11 +16,21 @@ export const MenuTabs = ({
   onTabChange,
   id,
 }: MenuTabsProps) => {
-  const navigate: ReturnType<typeof useNavigate> = useNavigate();
+  const navigate = useNavigate();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      containerRef.current.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  }, []);
 
   return (
     <div className="bg-gapBannerBg px-4 py-5 flex justify-center">
-      <div className="flex justify-center gap-4 overflow-x-auto scrollbar-hide">
+      <div
+        ref={containerRef}
+        className="flex justify-start md:justify-center w-[85%] gap-4 overflow-x-auto scrollbar-hide px-4 scroll-container"
+      >
         {tabs.map((tab) => (
           <button
             key={tab}
@@ -29,7 +40,8 @@ export const MenuTabs = ({
                 activeTab === tab
                   ? "bg-[#0796EF] text-white shadow-lg"
                   : "bg-black text-white hover:bg-gray-800"
-              }`}
+              }
+              `}
           >
             {tab}
             {activeTab === tab && (
